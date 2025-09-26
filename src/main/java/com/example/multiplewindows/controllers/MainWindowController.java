@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,7 +37,7 @@ public class MainWindowController {
             controller.setWindow1Label(nameTxt.getText());
 
             window1Stage.initModality(Modality.APPLICATION_MODAL);
-            window1Stage.setOnCloseRequest(e -> window1Stage = null);
+            window1Stage.setOnHidden(e -> window1Stage = null);
             window1Stage.show();
         }
         else {
@@ -58,7 +59,8 @@ public class MainWindowController {
             controller.setParent(this);
 
             window2Stage.initModality(Modality.APPLICATION_MODAL);
-            window2Stage.setOnCloseRequest(e -> window2Stage = null);
+            //use setOnHidden rather than setOnCloseRequest
+            window2Stage.setOnHidden(e -> window2Stage = null);
             window2Stage.show();
         }
         else {
